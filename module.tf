@@ -6,8 +6,13 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = var.resource_group_name
   address_space       = var.address_space
   dns_servers         = var.dns_servers
-  ddos_protection_plan = var.ddos_protection_plan
-  encryption           = var.encryption
+  ddos_protection_plan {
+    id = var.ddos_protection_plan.id
+    enable = var.ddos_protection_plan.enable
+  }
+  encryption  {
+    enforcement = var.encryption.enforcement
+  }
   edge_zone = var.edge_zone
   flow_timeout_in_minutes = var.flow_timeout_in_minutes
   tags = var.tags
