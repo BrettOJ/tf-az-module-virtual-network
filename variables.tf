@@ -26,15 +26,15 @@ variable "bgp_community" {
   
 variable "ddos_protection_plan" {
   type = object({
-    id = ""
-    enable = false
+    id = string
+    enable = bool
   })
   default = null
 }
 
 variable "encryption" {
   type = object({
-    enforcement = ""
+    enforcement = string
   })  
   default = null
 }
