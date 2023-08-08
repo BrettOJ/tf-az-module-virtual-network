@@ -1,4 +1,8 @@
 #variable file for an Azure virtual network  
+variable "resource_groups" {
+  type = map(any)
+  default = null
+}
 
 variable "address_space" {
   type = list(string)

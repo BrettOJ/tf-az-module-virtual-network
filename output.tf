@@ -1,3 +1,3 @@
 output "vnets_output" {
-  value = module.azurerm_virtual_network.vnet
+  value = azurerm_virtual_network.vnet
   }

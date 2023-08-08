@@ -1,4 +1,3 @@
-#variable file for an Azure virtual network  
 
 variable "address_space" {
   type = list(string)
