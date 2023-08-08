@@ -6,15 +6,21 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = var.resource_group_name
   address_space       = var.address_space
   dns_servers         = var.dns_servers
-  ddos_protection_plan {
-    for_each = var.ddos_protection_plan != null ? [1] : []
-    id = var.ddos_protection_plan.id
-    enable = var.ddos_protection_plan.enable
+
+  dynamic "ddos_protection_plan" {
+    for_each = var.ddos_protection_plan == null ? [] : [1]
+    content {
+      id     = var.ddos_protection_plan.id
+      enable = var.ddos_protection_plan.enable
+    }
   }
-  encryption  {
-    for_each = var.encryption != null ? [1] : []
-    enforcement = var.encryption.enforcement
+  dynamic "encryption"  {
+    for_each = var.encryption == null ? [] : [1]
+    content {
+      enforcement = var.encryption.enforcement
+    }
   }
+
   edge_zone = var.edge_zone
   flow_timeout_in_minutes = var.flow_timeout_in_minutes
   tags = var.tags

@@ -22,9 +22,9 @@ module "resource_groups" {
 
 
 module "azure_virtual_network"  {
-  source              = "git::https://github.com/BrettOJ/tf-az-module-virtual-network?ref=main"
+  source              = "../" #"git::https://github.com/BrettOJ/tf-az-module-virtual-network?ref=main"
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.resource_groups.rg_output[1].name
   address_space       = var.address_space
   dns_servers         = var.dns_servers
   naming_convention_info = local.naming_convention_info

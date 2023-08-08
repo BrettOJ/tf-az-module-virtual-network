@@ -6,7 +6,6 @@ variable "resource_groups" {
 
 variable "address_space" {
   type = list(string)
-  default = [""]
 }
 
 variable "location" {

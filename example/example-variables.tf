@@ -1,7 +1,6 @@
 
 variable "address_space" {
-  type = list(string)
-  default = [""]
+ type = list(string)
 }
 
 variable "location" {
