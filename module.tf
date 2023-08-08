@@ -7,10 +7,12 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = var.address_space
   dns_servers         = var.dns_servers
   ddos_protection_plan {
+    for_each = var.ddos_protection_plan != null ? [1] : []
     id = var.ddos_protection_plan.id
     enable = var.ddos_protection_plan.enable
   }
   encryption  {
+    for_each = var.encryption != null ? [1] : []
     enforcement = var.encryption.enforcement
   }
   edge_zone = var.edge_zone
