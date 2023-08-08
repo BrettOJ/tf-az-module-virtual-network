@@ -27,7 +27,7 @@ module "azure_virtual_network"  {
   resource_group_name = var.resource_group_name
   address_space       = var.address_space
   dns_servers         = var.dns_servers
-
+  naming_convention_info = local.naming_convention_info
   tags = {
     environment = "Production"
   }

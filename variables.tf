@@ -54,3 +54,7 @@ variable "tags" {
   default = null
 }
 
+variable "naming_convention_info" {
+  type = map(any)
+  default = null
+}
