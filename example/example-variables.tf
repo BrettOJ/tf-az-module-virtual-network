@@ -15,7 +15,7 @@ variable "resource_group_name" {
 
 variable "bgp_community" {
   type = string
-  default = ""
+  default = null
 }
   
 variable "ddos_protection_plan" {

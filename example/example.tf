@@ -31,4 +31,38 @@ module "azure_virtual_network"  {
   tags = {
     environment = "Production"
   }
+
+  subnets = {
+    1 = {
+      name = "subnet1"
+      address_prefixes = ["10.0.1.0/24"]
+      delegation = {
+        name = "delegation1"
+        service_delegation = {
+          name = "Microsoft.Web/serverFarms"
+          actions = null
+        }
+      }
+      private_endpoint_network_policies = null
+      private_link_service_network_policies_enabled = false
+      service_endpoints = null
+      service_endpoint_policy_ids = null
+    }
+    2 = {
+      name = "subnet2"
+      address_prefixes = ["10.0.2.0/24"]
+      delegation = {
+        name = "delegation2"
+        service_delegation = {
+          name = "Microsoft.Web/serverFarms"
+          actions = null
+        }
+      }
+      private_endpoint_network_policies = null
+      private_link_service_network_policies_enabled = false
+      service_endpoints = null
+      service_endpoint_policy_ids = null
+    }
+  }
 }
+
