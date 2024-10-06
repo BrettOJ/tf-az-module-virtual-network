@@ -1,5 +1,3 @@
-#variable file for an Azure virtual network  
-
 variable "location" {
   type = string
   default = "southeastasia"
@@ -62,27 +60,6 @@ variable "tags" {
   default = null
   description = "value for the tags of the virtual network"
 }
-
-variable "subnets" {
-  type = map(object({
-    name = string
-    address_prefixes = list(string)
-    delegation = object({
-      name = string
-      service_delegation = object({
-        name = string
-        actions = list(string)
-      })
-    })
-    private_endpoint_network_policies = string
-    private_link_service_network_policies_enabled = bool
-    service_endpoints = list(string)
-    service_endpoint_policy_ids = list(string)
-  }))
-  default = null
-  description = "value for the subnets of the virtual network"
-  }
-
 
 variable "naming_convention_info" {
   type = map(any)

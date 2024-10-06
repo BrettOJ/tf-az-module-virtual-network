@@ -25,22 +25,3 @@ resource "azurerm_virtual_network" "vnet" {
   }
 }
 
-resource "azurerm_subnet" "subnet" {
-  for_each = { for subnet in var.subnets : subnet.name => subnet }
-  #for_each = var.subnets == null ? [] : [var.subnets]
-  name                 = each.value.name
-  resource_group_name  = var.resource_group_name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefixes     = each.value.address_prefixes
-  delegation {
-    name = each.value.delegation.name
-    service_delegation {
-      name = each.value.delegation.service_delegation.name
-      actions = each.value.delegation.service_delegation.actions
-    }
-  }
-  private_endpoint_network_policies = each.value.private_endpoint_network_policies
-  private_link_service_network_policies_enabled = each.value.private_link_service_network_policies_enabled
-  service_endpoints = each.value.service_endpoints
-  service_endpoint_policy_ids = each.value.service_endpoint_policy_ids
-}
